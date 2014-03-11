@@ -73,6 +73,15 @@ public class Neo4jRepoTest {
 	public void tearDown() throws Exception {
 		repo.deleteAll();
 	}
+	
+	@Test
+	public void shouldFindAll() {
+		// when
+		long n = repo.count();
+
+		// then
+		assertEquals("User count mismatch", USER_COUNT + 1, n);
+	}
 
 	@Test
 	public void shouldFindRootUserById() {
@@ -81,6 +90,16 @@ public class Neo4jRepoTest {
 
 		// then
 		assertNotNull("Root user not found", root);
+	}
+	
+	@Test
+	public void shouldFindGivenUserByLogin() {
+		// Given
+		String givenLogin = String.format("user%02d", USER_COUNT - 1);
+		// When
+		User givenUser = repo.findByLogin(givenLogin);
+		// Then
+		assertNotNull("User with login " + givenLogin + " not found", givenUser);
 	}
 
 }
