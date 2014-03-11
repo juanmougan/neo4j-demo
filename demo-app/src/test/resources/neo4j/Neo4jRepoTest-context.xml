@@ -16,7 +16,7 @@
 	<neo4j:config graphDatabaseService="graphDatabaseService" />
 
 	<!-- Package w/ automagic repositories -->
-	<neo4j:repositories base-package="neo4j" />
+	<neo4j:repositories base-package="edu.jmmougan.neo4j.repo" />
 
 
 </beans>

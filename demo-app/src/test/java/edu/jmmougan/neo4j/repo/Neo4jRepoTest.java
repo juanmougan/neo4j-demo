@@ -3,19 +3,26 @@
  */
 package edu.jmmougan.neo4j.repo;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.jmmougan.neo4j.model.User;
 
 /**
  * @author juanmougan@gmail.com
  * 
+ * @change Fixed context loading error
+ * 
  */
+@RunWith(SpringJUnit4ClassRunner.class)						// Class used to run the tests
+@ContextConfiguration("/neo4j/Neo4jRepoTest-context.xml")	// Load the context
 public class Neo4jRepoTest {
 
 	private static final int USER_COUNT = 4;
@@ -64,11 +71,16 @@ public class Neo4jRepoTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		repo.deleteAll();
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void shouldFindRootUserById() {
+		// when
+		User root = repo.findOne(rootId);
+
+		// then
+		assertNotNull("Root user not found", root);
 	}
 
 }
