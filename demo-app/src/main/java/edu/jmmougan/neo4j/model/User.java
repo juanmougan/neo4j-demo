@@ -49,6 +49,10 @@ public class User {
 		this.friends = new HashSet<User>();
 	}
 	
+	/**
+	 * Adds a given user to our friend list
+	 * @param user a new friend
+	 */
 	public void knows(User user) {
 		friends.add(user);
 	}
