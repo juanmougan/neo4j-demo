@@ -64,5 +64,14 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>neo4j Demo</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<!-- <resource>
+				<directory>src/main/config</directory>
+			</resource> -->
+		</resources>
 	</build>
 </project>
